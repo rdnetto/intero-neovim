@@ -25,6 +25,8 @@ function! intero#process#start()
     if !exists('g:intero_buffer_id')
         let g:intero_buffer_id = s:start_buffer(10)
     endif
+    call intero#repl#send("import qualified System.IO as ISIO")
+    call intero#repl#send("ISIO.hSetBuffering ISIO.stdout ISIO.LineBuffering")
     return g:intero_buffer_id
 endfunction
 
